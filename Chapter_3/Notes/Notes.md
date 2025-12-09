@@ -55,3 +55,19 @@ int main(void)
 
 # 3.2 The `scanf` Function
 
+## How `scanf` works
+-  Just like printf, but instead of printing the according to the format, it will read and store the data that is being read to a variable. 
+- It starts reading from the left, and when locates a _format string_ with the `%` character, it reads the data that the user will input and stores in a variable with the `&` character
+	- Not adding the `&` will cause compiler errors or leave data out.
+- Ignores white spaces, tabs and new line characters in the input and in the formatting
+
+### Rules it follows
+- `Integer`: first searches for a digit, a plus sign or a minus sign then reads digits until it reaches a non digit.
+- `Floats`: first looks for a plus or minus sign, followed by a series of digits and then an exponent, optionally, more signs or digits. It will keep looking if there is only the digits part.  
+
+```C
+int i, j;
+float x, y;
+
+scanf("%d%d%f%", &i, &j, &x, &y);
+```
