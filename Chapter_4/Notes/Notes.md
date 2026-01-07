@@ -4,9 +4,9 @@
 - The simplest expressions are constants and values
 - More complicated expressions contains operators to operands
 - C has:
-    - Arithmetic operators, `+`, `-`, `*`, `/`
-    - Relational operators, `<` `>`
-    - Logical operators, `&&`, `||`, `!` 
+  - Arithmetic operators, `+`, `-`, `*`, `/`
+  - Relational operators, `<` `>`
+  - Logical operators, `&&`, `||`, `!` 
 - and about 50 more
 
 ## 4.1 Arithmetic Operators
@@ -16,10 +16,10 @@
 ![Arithmetic Operators](image.png)
 
 - `Binary` operators require 2 operands
-    - Standard operations in math, execept for `%`, which is the remainder of the operations
-        - ex: `10 % 4` is `1`, `12 % 4` is `0`
+- Standard operations in math, execept for `%`, which is the remainder of the operations
+  - ex: `10 % 4` is `1`, `12 % 4` is `0`
 - `Unary` operators require 1 operand
-    - `i = +1;`, `j = -i;` 
+  - `i = +1;`, `j = -i;` 
 
 <br>
 
@@ -39,7 +39,7 @@
 
 - The operators have the following precedences: 
 
-![](image-1.png)
+![Unary Binay table](image-1.png)
 
 - The compile will interpret the signs as the example
 
@@ -85,10 +85,10 @@
 
 - Easier way to write expressions 
 - `+= -= *= /= %=`
-- `i += 1` works almost the same as `i = i + 1`
+- `i += 1` works almost the same as `i = i + 1`, if it doesn't have a side effect
 - `i += j += k` means `i += (j += k)`
 
-# 4.3 Increment and Decrement Operators 
+## 4.3 Increment and Decrement Operators 
 
 - `i++`, `i--`
 - C allows to write easier increment and decrement expressions that were `i = i + 1` with `i++`
@@ -100,6 +100,27 @@
 
 ![Differences between prefix and postfix](image-5.png)
 
-# 4.4 Expression Evaluation
+## 4.4 Expression Evaluation
 
-- 
+- The table is great for knowing where to parenthesis in a complicated expression
+
+![Partial list of C operators](image-6.png)
+
+```C
+i = 2;
+j = i * i++;
+```
+
+- The value of this expression could be either 4 or 6 
+    1. The second operand (the original value of `i`) is fetched, then `i` is incremented
+    2. The first operand (the new value of `i`) is fetched
+    3. New and old values of `i` are multiplied, yielding 6.
+- Fetching means to retrieve a value from memory
+- A later change to the variable won't affect the fetched value, which is typically stored in a special locaiton (known as *register*) inside the CPU
+
+## 4.5 Expression Statements
+
+- Any expression can be a statement if used alone
+- `++i;` alone is a expression that will increment permanently the value of `i`
+- If used like `i + j;`, the value is fetched but not used, then discarded
+    - This statement has no effect
