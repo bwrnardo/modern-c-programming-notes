@@ -34,11 +34,13 @@ int main(void)
 
         if (row - 1 < 0)
             row = n - 1;
-        else row -= 1;
+        else
+            row -= 1;
 
         if (col + 1 > (n - 1))
             col = 0;
-        else col += 1;
+        else 
+            col += 1;
 
         if (magic_square[row][col] > 0) {
             pr += 1;
@@ -48,7 +50,8 @@ int main(void)
             row = pr;
             col = pc;
         }
-        else magic_square[row][col] = i;
+        else
+            magic_square[row][col] = i;
     }
 
     for (int i = 0; i < n; i++) {
